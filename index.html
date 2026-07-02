@@ -79,6 +79,11 @@
             align-items: center;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
         .loader-ring {
             width: 80px; height: 80px;
             border: 4px solid transparent;
@@ -147,71 +152,12 @@
             background: var(--border-color);
         }
 
-        .btn-block {
-            width: 100%;
-            justify-content: center;
-        }
-
         .hero-svg {
             fill: none;
             stroke: var(--primary);
             stroke-width: 2;
             opacity: 0.8;
             padding: 40px;
-        }
-
-        .gallery-icon {
-            opacity: 0.2;
-            font-size: 3rem;
-        }
-
-        .form-grid-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .form-full-width {
-            margin-bottom: 20px;
-        }
-
-        .map-placeholder-content {
-            background: #13192e;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .map-placeholder-content i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .contact-form-panel {
-            padding: 40px;
-        }
-
-        .form-group.spacing {
-            margin-bottom: 20px;
-        }
-
-        .form-group.spacing-large {
-            margin-bottom: 25px;
-        }
-
-        .newsletter-button {
-            padding: 12px 20px;
-        }
-
-        .footer-note {
-            margin-top: 5px;
-            opacity: 0.6;
         }
 
         /* --- BACKGROUND PARTICLES --- */
@@ -328,6 +274,10 @@
             color: var(--accent);
             margin-bottom: 25px;
         }
+        .cursor {
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .hero-desc {
             color: var(--text-muted);
             font-size: 1.1rem;
@@ -366,12 +316,6 @@
             padding: 8px;
             box-shadow: 0 20px 50px rgba(112, 0, 255, 0.3);
             animation: float 6s ease-in-out infinite;
-        }
-        .profile-card img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            background: var(--bg-dark);
         }
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -477,145 +421,11 @@
             transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* --- PORTFOLIO SECTION --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        .portfolio-card {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .portfolio-img {
-            width: 100%; height: 200px; background: #13192e; position: relative;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .portfolio-img i { font-size: 4rem; color: rgba(255,255,255,0.1); }
-        .portfolio-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .portfolio-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
-        .portfolio-tag {
-            font-size: 0.75rem; padding: 4px 10px; background: rgba(255,255,255,0.05);
-            border-radius: 50px; color: var(--text-muted);
-        }
-        .portfolio-content h3 { margin-bottom: 10px; font-size: 1.25rem; }
-        .portfolio-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
-        .portfolio-actions { display: flex; gap: 15px; margin-top: auto; }
-        .portfolio-actions .btn-premium, .portfolio-actions .btn-secondary {
-            padding: 10px 20px; font-size: 0.85rem;
-        }
-
-        /* --- GALLERY SECTION --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            height: 220px; border-radius: 16px; overflow: hidden; cursor: pointer;
-            position: relative; background: #13192e;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover; transition: var(--transition);
-        }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay {
-            position: absolute; top:0; left:0; width:100%; height:100%;
-            background: rgba(112, 0, 255, 0.4); display:flex; justify-content:center; align-items:center;
-            opacity: 0; transition: var(--transition);
-        }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay i { color: white; font-size: 1.5rem; }
-
-        /* --- TESTIMONIALS SECTION --- */
-        .testimonial-slider {
-            max-width: 800px; margin: 0 auto; position: relative; overflow: hidden; min-height: 300px;
-        }
-        .testimonial-track {
-            display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .testimonial-slide {
-            min-width: 100%; padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center;
-        }
-        .testi-avatar {
-            width: 80px; height: 80px; border-radius: 50%; background: var(--border-color);
-            margin-bottom: 20px; display: flex; justify-content: center; align-items: center; font-size: 2rem;
-        }
-        .testi-text { font-style: italic; font-size: 1.2rem; line-height: 1.7; margin-bottom: 20px; color: var(--text-muted); }
-        .testi-stars { color: var(--accent); margin-bottom: 10px; }
-        .testi-name { font-weight: 700; font-size: 1.1rem; }
-
-        /* --- REGISTRATION & CONTACT FORMS --- */
-        .form-container { max-width: 900px; margin: 0 auto; padding: 50px; }
-        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 25px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group.full-width { grid-column: span 2; }
-        .form-group label { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
-        .form-control {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border-color);
-            padding: 14px 20px; border-radius: 12px; color: var(--text-main); font-size: 1rem;
-            transition: var(--transition); outline: none;
-        }
-        [data-theme="light"] .form-control { background: rgba(0,0,0,0.01); }
-        .form-control:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.15); }
-        .checkbox-group { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-muted); }
-
-        .contact-wrapper {
-            display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px;
-        }
-        .contact-info { display: flex; flex-direction: column; gap: 30px; }
-        .contact-card { padding: 30px; display: flex; align-items: flex-start; gap: 20px; }
-        .contact-card i { font-size: 1.5rem; color: var(--primary); margin-top: 4px; }
-        .contact-card h4 { font-size: 1.1rem; margin-bottom: 5px; }
-        .contact-card p { color: var(--text-muted); font-size: 0.95rem; }
-        .map-placeholder {
-            width: 100%; height: 250px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);
-            position: relative; margin-top: 20px;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #050811; color: #94a3b8; padding: 80px 8% 30px 8%; border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .footer-grid {
-            display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 50px; margin-bottom: 50px;
-        }
-        .footer-brand h3 { font-size: 1.5rem; color: white; margin-bottom: 15px; }
-        .footer-links h4, .footer-news h4 { color: white; font-size: 1.1rem; margin-bottom: 20px; }
-        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
-        .footer-links a:hover { color: var(--primary); }
-        .newsletter-form { display: flex; gap: 10px; margin-top: 15px; }
-        .newsletter-form .form-control { background: rgba(255,255,255,0.05); }
-        .footer-bottom {
-            padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.85rem;
-        }
-
-        /* --- LIGHTBOX & BACK TO TOP --- */
-        #lightbox {
-            position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(5,8,17,0.95);
-            z-index: 10000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease;
-        }
-        #lightbox.active { display: flex; opacity: 1; }
-        #lightbox img { max-width: 85%; max-height: 85%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        #lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 2rem; cursor: pointer; }
-
-        .back-to-top {
-            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
-            background: var(--gradient-primary); color: white; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 5px 15px rgba(0,229,255,0.3);
-            opacity: 0; visibility: hidden; transition: var(--transition); z-index: 99;
-        }
-        .back-to-top.visible { opacity: 1; visibility: visible; }
-
-        /* --- IMPROVED RESPONSIVE MEDIA QUERIES --- */
+        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 1024px) {
             .section-padding { padding: 80px 5% 60px 5%; }
             .hero-title { font-size: 3rem; }
-            .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-container { grid-template-columns: 1fr; text-align: center; }
             .hero-desc { margin: 0 auto 35px auto; }
             .hero-buttons, .hero-socials { justify-content: center; }
@@ -648,26 +458,13 @@
             .counter-grid { gap: 15px; }
             .counter-card { padding: 20px; }
             .counter-num { font-size: 2.2rem; }
-
-            .form-container { padding: 25px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full-width { grid-column: span 1; }
-            .form-grid-inner { grid-template-columns: 1fr; }
-            
-            .contact-form-panel { padding: 25px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .skills-grid { grid-template-columns: 1fr; }
-            
-            .testimonial-slide { padding: 20px; }
-            .testi-text { font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
             .section-padding { padding: 60px 4% 40px 4%; }
             .hero-title { font-size: 2rem; }
             .counter-grid { grid-template-columns: 1fr; }
-            .portfolio-actions { flex-direction: column; }
-            .newsletter-form { flex-direction: column; }
         }
     </style>
 </head>
@@ -687,11 +484,6 @@
                 <li><a href="#about" class="nav-item">About</a></li>
                 <li><a href="#services" class="nav-item">Services</a></li>
                 <li><a href="#skills" class="nav-item">Skills</a></li>
-                <li><a href="#portfolio" class="nav-item">Portfolio</a></li>
-                <li><a href="#gallery" class="nav-item">Gallery</a></li>
-                <li><a href="#testimonials" class="nav-item">Testimonials</a></li>
-                <li><a href="#register" class="nav-item">Register</a></li>
-                <li><a href="#contact" class="nav-item">Contact</a></li>
             </ul>
             <div class="actions-map">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme" type="button">
@@ -714,7 +506,7 @@
                 </div>
                 <p class="hero-desc">Empowering the next generation of tech leaders through immersive, high-impact instruction in programming, modern web craft, and operational tech paradigms.</p>
                 <div class="hero-buttons">
-                    <a href="#register" class="btn-premium">Register Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="#about" class="btn-premium">Get Started <i class="fas fa-arrow-right"></i></a>
                     <a href="#services" class="btn-secondary">Explore Services</a>
                 </div>
                 <div class="hero-socials">
@@ -767,5 +559,175 @@
         </div>
     </section>
 
-    </body>
+    <section id="services" class="section-padding">
+        <h2 class="section-title">Educational Services</h2>
+        <div class="services-grid">
+            <div class="service-card glass-panel">
+                <div class="service-icon"><i class="fab fa-html5"></i></div>
+                <h3>HTML5 & CSS3</h3>
+                <p>Master semantic structures, responsive grid configurations, flexible layouts, and custom keyframe animations.</p>
+                <a href="#about" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="service-card glass-panel">
+                <div class="service-icon"><i class="fab fa-js"></i></div>
+                <h3>Vanilla JavaScript</h3>
+                <p>Deep dive into modern runtime logic, strict state handling, asynchronous networking, and absolute DOM controls.</p>
+                <a href="#about" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="service-card glass-panel">
+                <div class="service-icon"><i class="fab fa-python"></i></div>
+                <h3>Python Programming</h3>
+                <p>Build strong baseline foundations in OOP, clean data extraction engines, scripts, algorithms, and logical automation workflows.</p>
+                <a href="#about" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <div class="skill-item">
+                    <div class="skill-info"><span>HTML5 / CSS3</span><span>95%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>JavaScript (ES6+)</span><span>88%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="88%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 1. Preloader dismissal handling
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('fade-out');
+            
+            // Trigger dynamic elements post load
+            setTimeout(animateBars, 300);
+            setTimeout(animateCounters, 300);
+        });
+
+        // 2. Responsive Mobile navigation handling
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            menuBtn.setAttribute('aria-expanded', isOpen);
+            menuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // Close mobile sidebar on link clicking
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.className = 'fas fa-bars';
+            });
+        });
+
+        // Sticky Header threshold configuration
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('sticky', window.scrollY > 50);
+        });
+
+        // 3. Theme Toggle configuration engine
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const toggleIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            toggleIcon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+
+        // 4. Hero text typist logic loops
+        const phrases = ["Web Development", "Python Programming", "Cybersecurity", "Cloud Computing"];
+        let phraseIdx = 0, letterIdx = 0, isDeleting = false;
+        const targetContainer = document.getElementById('typed-text');
+
+        function processTyping() {
+            const currentText = phrases[phraseIdx];
+            if (isDeleting) {
+                targetContainer.textContent = currentText.substring(0, letterIdx - 1);
+                letterIdx--;
+            } else {
+                targetContainer.textContent = currentText.substring(0, letterIdx + 1);
+                letterIdx++;
+            }
+
+            let pace = isDeleting ? 50 : 100;
+
+            if (!isDeleting && letterIdx === currentText.length) {
+                pace = 2000; // Hold full phrase view
+                isDeleting = true;
+            } else if (isDeleting && letterIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                pace = 400; // Short gap before new string build
+            }
+
+            setTimeout(processTyping, pace);
+        }
+        setTimeout(processTyping, 1000);
+
+        // 5. Linear skills metric filler animation
+        function animateBars() {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
+            });
+        }
+
+        // 6. Incremental counter tracker algorithm 
+        function animateCounters() {
+            document.querySelectorAll('.counter-num').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                let current = 0;
+                const incrementalPace = Math.ceil(target / 60); 
+                
+                const frameClock = setInterval(() => {
+                    current += incrementalPace;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString() + "+";
+                        clearInterval(frameClock);
+                    } else {
+                        counter.textContent = current.toLocaleString();
+                    }
+                }, 25);
+            });
+        }
+
+        // 7. Dynamic active state handling on page scrolling
+        const structuralSections = document.querySelectorAll('section');
+        const internalNavItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let activeSegmentId = "";
+            structuralSections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    activeSegmentId = section.getAttribute('id');
+                }
+            });
+
+            internalNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${activeSegmentId}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
